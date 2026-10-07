@@ -1,65 +1,445 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Tiến Đạt MMO</title>
 
 <style>
-body{
+*{
     margin:0;
-    font-family:Arial;
-    background:#111;
-    color:white;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
-.header{
-    background:#1e88e5;
-    padding:20px;
-    text-align:center;
+body{
+    background:#f5f4fb;
 }
+
+/* SIDEBAR */
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:260px;
+    height:100vh;
+    background:#fff;
+    border-right:1px solid #e5e5e5;
+    padding:20px;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    color:#7c3aed;
+    margin-bottom:40px;
+}
+
+.menu{
+    list-style:none;
+}
+
+.menu li{
+    padding:14px;
+    margin-bottom:8px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.menu li:hover{
+    background:#f1eaff;
+    color:#7c3aed;
+}
+
+.active{
+    background:#ede4ff;
+    color:#7c3aed;
+    font-weight:bold;
+}
+
+.login-btn{
+    position:absolute;
+    bottom:20px;
+    left:20px;
+    right:20px;
+}
+
+.login-btn button{
+    width:100%;
+    padding:14px;
+    border:none;
+    background:#7c3aed;
+    color:white;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+/* MAIN */
+
+.main{
+    margin-left:260px;
+    padding:30px;
+}
+
+/* TOPBAR */
+
+.topbar{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.topbar h2{
+    color:#7c3aed;
+}
+
+.register{
+    background:#7c3aed;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+/* HERO */
 
 .hero{
-    text-align:center;
+    margin-top:25px;
+    background:linear-gradient(
+    135deg,
+    #ffffff,
+    #f1e7ff
+    );
+    border-radius:20px;
     padding:50px;
 }
 
-.btn{
-    background:#00c853;
-    color:white;
-    padding:15px 30px;
-    text-decoration:none;
-    border-radius:5px;
+.hero h1{
+    font-size:55px;
+    line-height:70px;
+    color:#111827;
 }
 
-.box{
-    width:300px;
-    margin:20px auto;
-    background:#222;
-    padding:20px;
+.hero span{
+    color:#8b5cf6;
+}
+
+.hero p{
+    margin-top:20px;
+    color:#555;
+    max-width:700px;
+    line-height:28px;
+}
+
+.hero-buttons{
+    margin-top:25px;
+}
+
+.buy-btn{
+    background:#7c3aed;
+    color:white;
+    border:none;
+    padding:14px 25px;
     border-radius:10px;
+    cursor:pointer;
+}
+
+.price-btn{
+    background:white;
+    border:1px solid #ddd;
+    padding:14px 25px;
+    border-radius:10px;
+    margin-left:10px;
+    cursor:pointer;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-top:25px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.card h3{
+    color:#7c3aed;
+    font-size:30px;
+}
+
+.card p{
+    color:#666;
+    margin-top:10px;
+}
+
+/* PRODUCT */
+
+.products{
+    margin-top:35px;
+}
+
+.products h2{
+    margin-bottom:20px;
+}
+
+.product{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.left{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.code{
+    background:#eef2ff;
+    color:#6366f1;
+    padding:8px 12px;
+    border-radius:10px;
+    font-size:14px;
+}
+
+.product-name{
+    font-weight:bold;
+}
+
+.stock{
+    background:#dcfce7;
+    color:#16a34a;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:13px;
+}
+
+.price{
+    color:#7c3aed;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.buy{
+    background:#7c3aed;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.right{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+/* FOOTER */
+
+.footer{
+    text-align:center;
+    margin-top:40px;
+    color:#777;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.sidebar{
+    position:relative;
+    width:100%;
+    height:auto;
+}
+
+.main{
+    margin-left:0;
+}
+
+.stats{
+    grid-template-columns:1fr;
+}
+
+.product{
+    flex-direction:column;
+    gap:15px;
+}
+
+.hero h1{
+    font-size:36px;
+    line-height:45px;
+}
+
 }
 </style>
-
 </head>
 
 <body>
 
-<div class="header">
-    <h1>TIẾN ĐẠT MMO</h1>
+<div class="sidebar">
+
+<div class="logo">
+💜 Tiến Đạt MMO
+</div>
+
+<ul class="menu">
+<li class="active">🏠 Dashboard</li>
+<li>🛒 Mua Code</li>
+<li>📱 Cloud Phone</li>
+<li>📦 Đơn Hàng</li>
+<li>💰 Nạp Tiền</li>
+<li>👤 Tài Khoản</li>
+<li>⚙ API</li>
+</ul>
+
+<div class="login-btn">
+<button>Đăng Nhập</button>
+</div>
+
+</div>
+
+<div class="main">
+
+<div class="topbar">
+<h2>Tiến Đạt MMO</h2>
+<button class="register">Đăng Ký</button>
 </div>
 
 <div class="hero">
-    <h2>Kiếm Tiền Online</h2>
-    <p>Chào mừng đến với website của tôi</p>
+<h1>
+Cloud Phone<br>
+<span>MMO Tự Động</span>
+</h1>
 
-    <a class="btn" href="#">Đăng Ký Ngay</a>
+<p>
+Dịch vụ Cloud Phone, Code MMO, TikTok,
+Facebook, Affiliate Marketing và các công cụ
+kiếm tiền online tự động.
+</p>
+
+<div class="hero-buttons">
+<button class="buy-btn">Mua Ngay</button>
+<button class="price-btn">Xem Bảng Giá</button>
+</div>
 </div>
 
-<div class="box">
-    <h3>Dịch vụ MMO</h3>
-    <p>Affiliate Marketing</p>
-    <p>Youtube</p>
-    <p>TikTok</p>
+<div class="stats">
+
+<div class="card">
+<h3>125</h3>
+<p>Khách Hàng</p>
+</div>
+
+<div class="card">
+<h3>850</h3>
+<p>Đơn Hoàn Thành</p>
+</div>
+
+<div class="card">
+<h3>35</h3>
+<p>Máy Đang Chạy</p>
+</div>
+
+<div class="card">
+<h3>24/7</h3>
+<p>Hỗ Trợ</p>
+</div>
+
+</div>
+
+<div class="products">
+
+<h2>Mua Code MMO</h2>
+
+<div class="product">
+<div class="left">
+<div class="code">CODE</div>
+<div class="product-name">
+UVIP 7 Ngày Singapore
+</div>
+</div>
+
+<div class="right">
+<div class="stock">Còn 25</div>
+<div class="price">49.000đ</div>
+<button class="buy">Mua</button>
+</div>
+</div>
+
+<div class="product">
+<div class="left">
+<div class="code">CODE</div>
+<div class="product-name">
+GVIP 7 Ngày Singapore
+</div>
+</div>
+
+<div class="right">
+<div class="stock">Còn 17</div>
+<div class="price">69.000đ</div>
+<button class="buy">Mua</button>
+</div>
+</div>
+
+<div class="product">
+<div class="left">
+<div class="code">CODE</div>
+<div class="product-name">
+UVIP 30 Ngày Singapore
+</div>
+</div>
+
+<div class="right">
+<div class="stock">Còn 10</div>
+<div class="price">179.000đ</div>
+<button class="buy">Mua</button>
+</div>
+</div>
+
+<div class="product">
+<div class="left">
+<div class="code">CODE</div>
+<div class="product-name">
+GVIP 30 Ngày Singapore
+</div>
+</div>
+
+<div class="right">
+<div class="stock">Còn 8</div>
+<div class="price">249.000đ</div>
+<button class="buy">Mua</button>
+</div>
+</div>
+
+</div>
+
+<div class="footer">
+© 2026 Tiến Đạt MMO - All Rights Reserved
+</div>
+
 </div>
 
 </body>
